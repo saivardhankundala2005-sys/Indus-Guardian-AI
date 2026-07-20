@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import base64
 
 # Set page config at the very beginning
 st.set_page_config(
@@ -20,6 +21,15 @@ def load_css(file_name):
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 load_css("css/style.css")
+
+# SVG base64 renderer helper
+def get_svg_html(svg_path, width="100%"):
+    if os.path.exists(svg_path):
+        with open(svg_path, "r") as f:
+            svg_code = f.read()
+        b64 = base64.b64encode(svg_code.encode()).decode()
+        return f'<img src="data:image/svg+xml;base64,{b64}" style="width: {width}; max-width: 100%; border: none;">'
+    return ""
 
 # Inject Dark Mode Override if active
 if st.session_state.theme_mode == "dark":
@@ -76,9 +86,8 @@ if not st.session_state.logged_in:
     # Render Brand Header
     logo_path = "assets/logo.svg"
     if os.path.exists(logo_path):
-        with open(logo_path, "r") as f:
-            svg_content = f.read()
-            st.markdown(f"<div style='max-width: 400px; margin: 30px auto;'>{svg_content}</div>", unsafe_allow_html=True)
+        logo_html = get_svg_html(logo_path, "400px")
+        st.markdown(f"<div style='text-align: center; margin: 30px auto;'>{logo_html}</div>", unsafe_allow_html=True)
             
     render_login()
 else:
@@ -86,9 +95,8 @@ else:
     with st.sidebar:
         logo_path = "assets/logo.svg"
         if os.path.exists(logo_path):
-            with open(logo_path, "r") as f:
-                svg_content = f.read()
-                st.markdown(f"<div style='margin-bottom: 20px;'>{svg_content}</div>", unsafe_allow_html=True)
+            logo_html = get_svg_html(logo_path, "100%")
+            st.markdown(f"<div style='margin-bottom: 20px;'>{logo_html}</div>", unsafe_allow_html=True)
         else:
             st.markdown("### Indus Guardian AI")
             
