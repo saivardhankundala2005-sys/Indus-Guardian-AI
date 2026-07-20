@@ -1,0 +1,343 @@
+/* Custom Stylesheet for Indus Guardian AI */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Global Font Override */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+/* Light Theme Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --accent-blue: #2563eb;
+    --accent-indigo: #4f46e5;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: rgba(31, 38, 135, 0.05);
+    --card-bg: #ffffff;
+    --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-gradient: linear-gradient(135deg, #030712 0%, #0c0a09 100%);
+    --accent-blue: #3b82f6;
+    --accent-indigo: #6366f1;
+    --glass-bg: rgba(15, 23, 42, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --card-bg: #0f172a;
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #1e293b;
+}
+
+/* Base Card Styling */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 20px;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px 0 rgba(37, 99, 235, 0.1);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Interactive Card Variant */
+.interactive-card {
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.25s ease;
+}
+
+.interactive-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    border-color: var(--accent-indigo);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.12);
+}
+
+/* Protection Score Radial Custom Styles */
+.score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.score-circle-outer {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 50%, rgba(241, 245, 249, 1) 100%);
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.05), 0 10px 25px rgba(37,99,235,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 6px solid var(--border-color);
+}
+
+.score-value {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 0;
+}
+
+.score-max {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-fade-in {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes pulseRed {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 25px rgba(239, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* Emergency Mode Styling */
+.emergency-sos-btn {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto 30px auto;
+    animation: pulseRed 2s infinite;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.emergency-sos-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+}
+
+/* Timeline Components */
+.timeline-container {
+    border-left: 2px dashed var(--border-color);
+    padding-left: 24px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    position: absolute;
+    left: -32px;
+    top: 5px;
+    border: 2px solid var(--card-bg);
+}
+
+.timeline-dot.active {
+    background: #10b981;
+}
+
+.timeline-dot.pending {
+    background: #f59e0b;
+}
+
+/* Quick Action Chips */
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.action-chip {
+    padding: 8px 16px;
+    background: rgba(37, 99, 235, 0.06);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    color: var(--accent-blue);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-chip:hover {
+    background: var(--accent-blue);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Claim Status Tracker */
+.tracker-step {
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border-left: 4px solid var(--border-color);
+    margin-bottom: 10px;
+}
+
+.tracker-step.completed {
+    border-left-color: #10b981;
+    background: rgba(16, 185, 129, 0.03);
+}
+
+.tracker-step.in-progress {
+    border-left-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.03);
+}
+
+/* Hero Section */
+.hero-gradient {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1e3a8a 50%, #0f172a 100%);
+    border-radius: 24px;
+    padding: 40px;
+    color: white;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-gradient::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(99,102,241,0) 70%);
+    border-radius: 50%;
+}
+
+/* AI Assistant Messages */
+.chat-bubble {
+    padding: 14px 18px;
+    border-radius: 18px;
+    margin-bottom: 12px;
+    max-width: 85%;
+    line-height: 1.5;
+    font-size: 14.5px;
+}
+
+.chat-bubble.assistant {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    border-top-left-radius: 4px;
+    align-self: flex-start;
+}
+
+.chat-bubble.user {
+    background: var(--accent-blue);
+    color: white;
+    border-top-right-radius: 4px;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+/* Custom Metric Cards */
+.stat-card {
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(37,99,235,0.08);
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sidebar Custom Logo Header */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.sidebar-logo-text {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent-indigo);
+}
+
+/* Custom Progress Bar Styling */
+.custom-progress {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-color);
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.custom-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-indigo) 100%);
+    transition: width 0.5s ease-in-out;
+}

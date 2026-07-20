@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <!-- Drop Shadow -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Icon Section -->
+  <g transform="translate(10, 10)">
+    <!-- Base Shield -->
+    <path d="M 50 10 
+             C 75 10, 90 20, 90 45 
+             C 90 75, 50 95, 50 95 
+             C 50 95, 10 75, 10 45 
+             C 10 20, 25 10, 50 10 Z" 
+          fill="url(#shieldGrad)" 
+          filter="url(#dropShadow)" />
+
+    <!-- AI Pulse Inner Details -->
+    <path d="M 32 45 
+             L 45 60 
+             L 68 35" 
+          fill="none" 
+          stroke="#ffffff" 
+          stroke-width="6" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+          
+    <!-- Glowing Ring/Orbit -->
+    <ellipse cx="50" cy="50" rx="42" ry="25" 
+             fill="none" 
+             stroke="url(#accentGrad)" 
+             stroke-width="3" 
+             stroke-dasharray="8, 6" 
+             transform="rotate(-25, 50, 50)" />
+  </g>
+
+  <!-- Typography Section -->
+  <g transform="translate(125, 45)">
+    <!-- Brand Name (First Line) -->
+    <text x="0" y="10" 
+          font-family="'Plus Jakarta Sans', 'Outfit', sans-serif" 
+          font-size="28" 
+          font-weight="800" 
+          letter-spacing="1" 
+          fill="#1e1b4b">
+      INDUS
+    </text>
+    <text x="102" y="10" 
+          font-family="'Plus Jakarta Sans', 'Outfit', sans-serif" 
+          font-size="28" 
+          font-weight="800" 
+          letter-spacing="1" 
+          fill="#2563eb">
+      GUARDIAN
+    </text>
+    
+    <!-- Tagline (Second Line) -->
+    <text x="0" y="32" 
+          font-family="'Plus Jakarta Sans', sans-serif" 
+          font-size="12" 
+          font-weight="600" 
+          letter-spacing="3" 
+          fill="#64748b">
+      YOUR AI PROTECTION COMPANION
+    </text>
+  </g>
+</svg>
